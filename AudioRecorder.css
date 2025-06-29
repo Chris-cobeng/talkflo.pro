@@ -1,0 +1,259 @@
+/* Audio Recorder Component Styles */
+.audio-recorder {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Waveform Section */
+.waveform-section {
+  margin-bottom: 16px;
+}
+
+.waveform-container {
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.waveform-canvas {
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  background: #f8f9fa;
+}
+
+/* Recording Indicator */
+.recording-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  font-size: 14px;
+  color: #dc3545;
+  font-weight: 500;
+}
+
+.recording-dot {
+  width: 8px;
+  height: 8px;
+  background: #dc3545;
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+/* Recording Timer */
+.recording-timer {
+  text-align: center;
+  margin: 12px 0;
+  padding: 8px 16px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border: 1px solid #dee2e6;
+}
+
+.timer-text {
+  font-size: 18px;
+  font-weight: 600;
+  color: #495057;
+  font-family: 'Courier New', monospace;
+}
+
+.timer-text.paused {
+  color: #ffc107;
+}
+
+.paused-indicator {
+  margin-left: 12px;
+  font-size: 12px;
+  color: #ffc107;
+  font-weight: 700;
+}
+
+/* Error Message */
+.error-message {
+  background: #f8d7da;
+  color: #721c24;
+  padding: 12px 16px;
+  border-radius: 6px;
+  border: 1px solid #f5c6cb;
+  margin: 12px 0;
+  font-size: 14px;
+}
+
+/* Control Buttons */
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.recording-controls,
+.playback-controls {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-record {
+  background: #dc3545;
+  color: white;
+}
+
+.btn-record:hover:not(:disabled) {
+  background: #c82333;
+}
+
+.btn-record-new {
+  background: #28a745;
+  color: white;
+}
+
+.btn-record-new:hover:not(:disabled) {
+  background: #218838;
+}
+
+.btn-pause {
+  background: #ffc107;
+  color: #212529;
+}
+
+.btn-pause:hover:not(:disabled) {
+  background: #e0a800;
+}
+
+.btn-stop {
+  background: #6c757d;
+  color: white;
+}
+
+.btn-stop:hover:not(:disabled) {
+  background: #5a6268;
+}
+
+.btn-play {
+  background: #007bff;
+  color: white;
+}
+
+.btn-play:hover:not(:disabled) {
+  background: #0056b3;
+}
+
+.btn-reset {
+  background: #dc3545;
+  color: white;
+}
+
+.btn-reset:hover:not(:disabled) {
+  background: #c82333;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .audio-recorder {
+    padding: 16px;
+    margin: 0 16px;
+  }
+  
+  .recording-controls,
+  .playback-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .btn {
+    min-width: auto;
+    width: 100%;
+  }
+  
+  .timer-text {
+    font-size: 16px;
+  }
+}
+
+/* Dark Theme Support */
+@media (prefers-color-scheme: dark) {
+  .audio-recorder {
+    background: #2d3748;
+    color: #e2e8f0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .waveform-canvas {
+    border-color: #4a5568;
+    background: #1a202c;
+  }
+  
+  .recording-timer {
+    background: #4a5568;
+    border-color: #718096;
+  }
+  
+  .timer-text {
+    color: #e2e8f0;
+  }
+  
+  .error-message {
+    background: #fed7d7;
+    color: #9b2c2c;
+    border-color: #feb2b2;
+  }
+}
+
+/* Focus Styles for Accessibility */
+.btn:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+/* Loading States */
+.btn.loading {
+  position: relative;
+  pointer-events: none;
+}
+
+.btn.loading::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
